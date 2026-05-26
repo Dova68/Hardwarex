@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Mantenimiento - Hardware</title>
+    <link rel="stylesheet" href="../static/historial.css">
+</head>
+<body>
+
+<div class="main-container">
+        
+        <!-- Sidebar (Menú Lateral) -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Hardwarex</span>
+            </div>
+
+            <nav class="menu">
+                <a href="index.html" class="menu-item active">
+                    <i class="fa-solid fa-circle-plus"></i> Registrar Daño
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Ver Historial
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-user"></i> Mi Perfil
+                </a>
+            </nav>
+
+            <div class="logout-area">
+                <a href="#" class="menu-item text-danger">
+                    <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+<main class="content">
+            <!-- Header Superior -->
+            <header class="top-bar">
+                <main>
+                    <div class="page-header">
+                        <h1 class="page-title">Historial de Servicios</h1>
+                        <button class="btn btn-primary">+ Generar Reporte</button>
+                    </div>
+                </main>
+                <div class="user-info">
+                    <div class="notification">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Juan+Doe&background=10b981&color=fff" alt="User">
+                    </div>
+                    <div class="user-details">
+                        <span class="name">Juan Doe</span>
+                        <span class="role">Usuario</span>
+                    </div>
+                </div>
+            </header>
+            
+            
+            
+            
+    <div class="container">
+                
+                <!-- Contenido Principal: Tabla de Historial -->
+                
+            
+            <div class="table-card">
+                <table class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>ID Ticket</th>
+                            <th>Fecha</th>
+                            <th>Equipo / Dispositivo</th>
+                            <th>Tipo de Falla</th>
+                            <th>Técnico Asignado</th>
+                            <th>Costo</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#MANT-001</td>
+                            <td>12 Oct 2023</td>
+                            <td>Servidor Dell PowerEdge</td>
+                            <td>Sobrecalentamiento</td>
+                            <td>Juan Pérez</td>
+                            <td>$120.00</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                            <td><button class="btn btn-detail">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>#MANT-002</td>
+                            <td>14 Oct 2023</td>
+                            <td>Workstation HP Z4</td>
+                            <td>Error de Disco NVMe</td>
+                            <td>Maria Gomez</td>
+                            <td>$450.00</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                            <td><button class="btn btn-detail">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>#MANT-003</td>
+                            <td>15 Oct 2023</td>
+                            <td>Switch Cisco 2960</td>
+                            <td>Pérdida de Paquetes</td>
+                            <td>Juan Pérez</td>
+                            <td>--</td>
+                            <td><span class="badge badge-en-reparacion">En Revisión</span></td>
+                            <td><button class="btn btn-detail">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>#MANT-004</td>
+                            <td>18 Oct 2023</td>
+                            <td>Impresora Laser MF644</td>
+                            <td>Atasco de Papel</td>
+                            <td>Carlos Ruiz</td>
+                            <td>$0.00</td>
+                            <td><span class="badge badge-pendiente">Pendiente</span></td>
+                            <td><button class="btn btn-detail">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>#MANT-005</td>
+                            <td>20 Oct 2023</td>
+                            <td>Monitor LG 27"</td>
+                            <td>Pixel quemado</td>
+                            <td>Maria Gomez</td>
+                            <td>Garantía</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                            <td><button class="btn btn-detail">Ver</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</main>
+</div>    
+
+</body>
+</html>
