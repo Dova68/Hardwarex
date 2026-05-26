@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/png" href="../static/img/logo_1.png">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css">
+</head>
+<body>
+      
+   
+    <header>
+
+        <div class="menu container">
+
+            <img src="../static/img/logo_1.png" alt="" class="logo">
+            <img src="../static/img/escritura_zephyros.png" alt="" class="logo-1">
+
+             <nav class="navbar">
+                     <ul>
+                             <li><a href="{{ url_for('inicio') }}">Home</a></li>
+                             <li><a href="{{ url_for('info') }}">Information</a></li>
+                             <li><a href="{{ url_for('products') }}">Products</a></li>
+                             <li><a href="{{ url_for('index') }}">Login/Register</a></li>
+                     </ul>
+             </nav>
+
+        </div>
+        
+    </header>
+
+
+
+    <div class="containers" id="container">
+
+        <div class="form-container register-container">
+            <form action="/enviar" method="post">
+                <h1>REGISTER</h1>
+                <input type="text" name="num_doc_id"  placeholder="Numero de documento" required>
+                <input type="number" name="tipo_doc" min="1" max="3" placeholder="1.CC 2.CE 3.TI" required>
+                <input type="text" name="nombre"  placeholder="Name" required>
+                <input type="text" name="apellido"  placeholder="Apellido" required>
+                <input type="text" name="celular_usuario" placeholder="Numero celular" required>
+                <input type="email" name="email_usuario"  placeholder="Email" required>
+                <input type="password" name="contraseña"  placeholder="Password" required>
+                <input type="text" name="direccion_usuario"  placeholder="Direccion" required>
+                <input type="number" name="id_estado" value="1" hidden>
+                <input type="number" name="rol_id" value="2" hidden>
+                <button type="submit">Register</button>
+            </form>
+        </div> 
+
+    <div class="form-container login-container">
+        <form action="/login" method="post">
+            <h1>LOGIN</h1>
+            <input type="email" name="email_usuario" placeholder="Email" required>
+            <input type="password" name="contraseña"  placeholder="Password" required>
+            <div class="content">
+                <div class="pass-link">
+                    <a href="#">¿Olvidaste tu contraseña?</a><br>
+                </div>
+            </div>
+            <button>Login</button>
+            <div class="class-container">
+                <a href="https://www.facebook.com/coldulcemaria/?locale=es_LA" class="social"><i class="lni lni-facebook-square"></i></a>
+                <a href="https://colegiodulcemaria.edu.co/" class="social"><i class="lni lni-google"></i></a>
+                <a href="https://www.instagram.com/colegiopedagogicodulcemaria/?hl=es-la" class="social"><i class="lni lni-instagram"></i></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+            <h1 class="title">Bienvenidos<br></h1>
+            <p>a nuestra tienda donde el lujo recorre cada kilometro</p>
+            <button class="ghost" id="login">Login
+                <i class="lni lni-arrow-left login"></i>
+            </button>
+            </div> 
+            <div class="overlay-panel overlay-right">
+                <h1 class="title">Start your <br>journy now</h1>
+                <p>¿No tienes una cuenta? dale click aquí</p>
+                <button class="ghost" id="register">Register
+                    <i class="lni lni-arrow-right register"></i>
+                </button>
+            </div>
+        </div> 
+    </div>
+
+    </div> 
+    
+    <script src="../static/js/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
