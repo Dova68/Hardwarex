@@ -41,10 +41,11 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 40px;
+    color: #c0d7f0;
 }
 
 .logo-area i {
-    color: var(--white);
+    color: #c0d7f0;
 }
 
 .menu {
@@ -139,12 +140,65 @@ body {
     color: var(--text-gray);
 }
 
+/* barra de proceso */
+.progress-bar-custom{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.step{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+
+.circle{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#d1d5db;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+.step span{
+    font-size:14px;
+    color:#6b7280;
+}
+
+.line{
+    width:100px;
+    height:4px;
+    background:#d1d5db;
+    margin:0 10px;
+}
+
+.active .circle{
+    background:#0f029f;
+}
+
+.active span{
+    color:#0f029f;
+    font-weight:600;
+}
+
 /* --- Tarjeta de Formulario --- */
 .register-card {
-
-    padding: 30px;
+    background:#d7dade;
+    border-radius: 20px;
+    align-items: center;
+    padding: 40px;
     max-width: 900px;
-    margin: 0 auto;
+    margin:50px auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    
 }
 
 .card-header {
@@ -209,32 +263,33 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #202020;
+    box-shadow: 0 0 0 3px rgba(96, 103, 98, 0.3);
     background: var(--white);
 }
 
 /* --- File Upload --- */
 .file-upload {
-    border: 2px dashed #d1d5db;
+    border: 2px dashed #b8bec5;
     padding: 20px;
     text-align: center;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
-    color: var(--text-gray);
+    color: #202020
+    ;
 }
 
 .file-upload:hover {
-    border-color: var(--primary-green);
-    background-color: var(--soft-green);
+    border-color: #323232;
+    background-color: #e4e3e3;
 }
 
 .file-upload i {
     font-size: 2rem;
     margin-bottom: 10px;
     display: block;
-    color: var(--primary-green);
+    color: #000000;
 }
 
 .input-file {
@@ -261,23 +316,25 @@ textarea:focus {
 }
 
 .btn-cancel {
-    background: transparent;
-    color: var(--text-gray);
+    background: linear-gradient(90deg,#dfdfdf 30%, #d2d2d2 100%);
+    color: #000000;
+    box-shadow: 0 1px 6px rgba(96, 103, 98, 0.3);
 }
 
 .btn-cancel:hover {
-    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 15px rgba(14, 44, 193, 0.4);
 }
 
 .btn-submit {
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-green) 100%);
+    background: linear-gradient(90deg,#dfdfdf 0%, #d2d2d2 100%);
     color: var(--white);
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 10px rgba(96, 103, 98, 0.3);
 }
 
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 6px 15px rgba(14, 44, 193, 0.4);
 }
 
 /* --- Responsive --- */
