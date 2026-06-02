@@ -11,7 +11,7 @@ Este proyecto se basa en la creacion de una pagina para empresas que necesitan a
 ## Requisitos
 
 - Django
-- Requisito 2
+- Visual Studio
 - Requisito 3
 
 ## Instalación
@@ -19,13 +19,13 @@ Este proyecto se basa en la creacion de una pagina para empresas que necesitan a
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/usuario/repositorio.git
+git clone https://github.com/Dova68/Hardwarex.git
 ```
 
 2. Entra en la carpeta del proyecto:
 
 ```bash
-cd repositorio
+cd Hardwarex
 ```
 
 3. Instala las dependencias:
@@ -49,6 +49,7 @@ Hardwarex/
 ├── mantenimiento_app/
 ├── static/
 ├── templates/
+├── LICENSE.md
 ├── README.md
 ├── db.sqlite3
 └── manage.py
