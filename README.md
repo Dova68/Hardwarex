@@ -45,12 +45,13 @@ npm start
 ## Estructura del Proyecto
 
 ```text
-proyecto/
-├── src/
-├── docs/
-├── tests/
+Hardwarex/
+├── mantenimiento_app/
+├── static/
+├── templates/
 ├── README.md
-└── package.json
+├── db.sqlite3
+└── manage.py
 ```
 
 ## Contribución
