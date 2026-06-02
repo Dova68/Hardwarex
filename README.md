@@ -1,6 +1,6 @@
-# Nombre del Proyecto
+# Hardwarex
 
-Breve descripción del proyecto.
+Este proyecto se basa en la creacion de una pagina para empresas que necesitan administrar los mantenimientos de sus equipos por medio de tickets para su arreglo.
 
 ## Características
 
@@ -10,7 +10,7 @@ Breve descripción del proyecto.
 
 ## Requisitos
 
-- Requisito 1
+- Django
 - Requisito 2
 - Requisito 3
 
@@ -56,9 +56,9 @@ Hardwarex/
 
 ## Contribución
 
-Las contribuciones son bienvenidas. Para contribuir:
+Para contribuir:
 
-1. Haz un fork del repositorio.
+1. Clona el repositorio.
 2. Crea una rama nueva.
 3. Realiza tus cambios.
 4. Envía un Pull Request.
