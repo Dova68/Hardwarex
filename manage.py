@@ -1,22 +1,45 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
-import os
-import sys
+from django.db import models
+from abc import ABC, abstractmethod
+from datetime import date, datetime
 
 
-def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mantenimiento_app.settings')
-    try:
-        from django.core.management import execute_from_command_line
-    except ImportError as exc:
-        raise ImportError(
-            "Couldn't import Django. Are you sure it's installed and "
-            "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
-        ) from exc
-    execute_from_command_line(sys.argv)
+#Herencia
+class BaseModel(models.Model, ABC):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    estado = models.CharField(max_length=20, default='Activo')
 
+    class Meta:
+        abstract = True
 
-if __name__ == '__main__':
-    main()
+    @abstractmethod #implementacion de metodo cada hijo
+    def activar(self):
+        pass
+
+    @abstractmethod
+    def desactivar(self):
+        pass
+
+    def cambiar_estado(self, nuevo_estado):
+        if nuevo_estado in [Retrasado, Finalizado, pendiente, Completado]:
+            self.estado = nuevo_estado
+            self.save()
+            return f"Estado cambiado a {nuevo_estado}"
+        
+class rol(BaseModel):
+    id_rol = models.AutoField(primary_key=True)
+    nombre_rol = models.CharField(max_length=50)
+    descripcion_rol = models.TextField()
+
+    def activar(self):
+        self.estado = 'Activo'
+        self.save
+        return f"Rol {self.nombre_rol} desactivado"
+    
+    def desactivar(self):
+        self.estado = 'Inactivo'
+        self.save()
+        return f"Rol {self.nombre_rol} desactivado"
+    
+    def asignar_permisos(self, *permisos):
+        print(f"Permisos {', '.join(permisos)} asignados al rol {self.nombre_rol}")
