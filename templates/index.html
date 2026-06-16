@@ -91,6 +91,7 @@
                     <p>Por favor ingresa los detalles del problema.</p>
                 </div>
 
+                <div id="main-form-1">
                 <form action="#" method="POST" class="main-form">
                     <div class="form-row">
                         <div class="form-group">
@@ -143,10 +144,123 @@
                         <button type="submit" class="btn-submit">Enviar Solicitud</button>
                     </div>
                 </form>
+                </div>
+                <br>
+
+                <div id="main-form-2">
+                <form action="#" method="POST" class="main-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="device-name">Marca del Dispositivo</label>
+                            <input type="text" id="device-name" placeholder="Ej: Laptop Dell XPS 15" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue-type">Tipo de Daño</label>
+                            <select id="issue-type" required>
+                                <option value="" disabled selected>Selecciona una opción...</option>
+                                <option value="hardware">Falla de Hardware (Pantalla, Teclado)</option>
+                                <option value="software">Falla de Software / Virus</option>
+                                <option value="lentitud">Lentitud Extrema</option>
+                                <option value="otro">Otro...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="urgency">Nivel de Urgencia</label>
+                            <select id="urgency" required>
+                                <option value="baja">Baja</option>
+                                <option value="media" selected>Media</option>
+                                <option value="alta">Alta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="serial-number">Número de Serie (Opcional)</label>
+                            <input type="text" id="serial-number" placeholder="XxXxXxXxXx">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Descripción del Daño</label>
+                        <textarea id="description" rows="5" placeholder="Describe detalladamente qué está pasando con el equipo..." required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Adjuntar Imagen (Opcional)</label>
+                        <div class="file-upload">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Arrastra una imagen aquí o haz clic para subir</span>
+                            <input type="file" class="input-file">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                    </div>
+                </form>
+                </div>
+                <br>
+
+                <div id="main-form-3">
+                <form action="#" method="POST" class="main-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="device-name">Marca del Dispositivo</label>
+                            <input type="text" id="device-name" placeholder="Ej: Laptop Dell XPS 15" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue-type">Tipo de Daño</label>
+                            <select id="issue-type" required>
+                                <option value="" disabled selected>Selecciona una opción...</option>
+                                <option value="hardware">Falla de Hardware (Pantalla, Teclado)</option>
+                                <option value="software">Falla de Software / Virus</option>
+                                <option value="lentitud">Lentitud Extrema</option>
+                                <option value="otro">Otro...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="urgency">Nivel de Urgencia</label>
+                            <select id="urgency" required>
+                                <option value="baja">Baja</option>
+                                <option value="media" selected>Media</option>
+                                <option value="alta">Alta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="serial-number">Número de Serie (Opcional)</label>
+                            <input type="text" id="serial-number" placeholder="XxXxXxXxXx">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Descripción del Daño</label>
+                        <textarea id="description" rows="5" placeholder="Describe detalladamente qué está pasando con el equipo..." required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Adjuntar Imagen (Opcional)</label>
+                        <div class="file-upload">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Arrastra una imagen aquí o haz clic para subir</span>
+                            <input type="file" class="input-file">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                    </div>
+                </form>
+                </div>
             </section>
 
         </main>
     </div>
-
+<script src="/static/js/index.js"></script>
 </body>
 </html>

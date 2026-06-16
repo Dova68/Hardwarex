@@ -196,7 +196,7 @@ body {
     align-items: center;
     padding: 40px;
     max-width: 900px;
-    margin:50px auto;
+    margin:50px ;
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
     
 }
@@ -222,6 +222,7 @@ body {
 }
 
 /* --- Form Styling --- */
+
 .main-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
