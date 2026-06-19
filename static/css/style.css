@@ -19,9 +19,8 @@ body {
 
 }
 
-/* --- Sidebar --- */
 .sidebar {
-    width: 260px;
+    width: 16rem;
     background-color:#202020;
     color: beige;
     display: flex;
@@ -80,11 +79,10 @@ body {
     border-left-color: var(--danger) !important;
 }
 
-/* --- Contenido Principal --- */
 .content {
-    margin-left: 260px; /* Ancho del sidebar */
+    margin-left: 16rem;
     flex: 1;
-    padding: 30px 40px;
+    padding: 2rem 2.5rem;
     overflow-y: auto;
 }
 
@@ -119,8 +117,8 @@ body {
 }
 
 .avatar img {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     border: 2px solid var(--primary-green);
 }
@@ -157,8 +155,8 @@ body {
 }
 
 .circle{
-    width:40px;
-    height:40px;
+    width:2.5rem;
+    height:2.5rem;
     border-radius:50%;
     background:#d1d5db;
     color:white;
@@ -174,7 +172,7 @@ body {
 }
 
 .line{
-    width:100px;
+    width:6rem;
     height:4px;
     background:#d1d5db;
     margin:0 10px;
@@ -189,16 +187,15 @@ body {
     font-weight:600;
 }
 
-/* --- Tarjeta de Formulario --- */
 .register-card {
     background:#d7dade;
     border-radius: 20px;
     align-items: center;
     padding: 40px;
-    max-width: 900px;
-    margin:50px ;
+    width: 100%;
+    max-width: 56.25rem;
+    margin:auto;
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    
 }
 
 .card-header {
@@ -339,10 +336,76 @@ textarea:focus {
 }
 
 /* --- Responsive --- */
-@media (max-width:1000px ) {
+@media (max-width: 1000px) {
+
     .sidebar {
-        width: 230px;
-        padding: 5px;
-        align-items: center
+        width: 14rem;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .content {
+        margin-left: 14rem;
+        padding: 1.5rem;
+    }
+
+    .register-card {
+        padding: 30px;
+    }
+
+    .line {
+        width: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .main-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .form-actions {
+        grid-column: span 1;
+        flex-direction: column;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        width: 100%;
+    }
+
+    .progress-bar-custom {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .line {
+        display: none;
     }
 }
