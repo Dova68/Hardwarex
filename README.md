@@ -64,6 +64,13 @@ Para contribuir:
 3. Realiza tus cambios.
 4. Envía un Pull Request.
 
+## Equipo
+integrantes:
+Iker Romero
+Tania Castiblanco
+Adriana Buitrago
+Juan José Fuentes
+
 ## Licencia
 
 Este proyecto está bajo la licencia MIT.
