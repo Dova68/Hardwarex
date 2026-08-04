@@ -47,28 +47,28 @@
             font-size: 1.4rem;
         }
 
-        .menu {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
         .menu-item {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 14px 16px;
-            border-radius: 14px;
+            border-radius: 16px;
             color: #cbd5e1;
             text-decoration: none;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+        }
+
         .menu-item:hover,
         .menu-item.active {
-            background: rgba(59, 130, 246, 0.18);
+            background: rgba(96, 165, 250, 0.18);
             color: #ffffff;
-        }
+        } 
+
 
         .logout-area a {
             color: #fecaca;

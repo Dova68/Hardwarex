@@ -298,11 +298,11 @@ input{
 }
 
 .overlay{
-    background-image: url(../img/gif_login.gif);
+    background-image: url(../img/coding.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
-    color: #fff;
+    color: #000000;
     position: relative;
     left: -100%;
     height: 100%;
