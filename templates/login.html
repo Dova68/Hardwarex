@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +21,10 @@
 
              <nav class="navbar">
                      <ul>
-                             <li><a href="{{ url_for('inicio') }}">Home</a></li>
-                             <li><a href="{{ url_for('info') }}">Information</a></li>
-                             <li><a href="{{ url_for('products') }}">Products</a></li>
-                             <li><a href="{{ url_for('index') }}">Login/Register</a></li>
+                             <li><a href="{% url 'inicio' %}">Home</a></li>
+                             <li><a href="{% url 'historial' %}">Information</a></li>
+                             <li><a href="{% url 'historial' %}">Products</a></li>
+                             <li><a href="{% url 'historial' %}">Login/Register</a></li>
                      </ul>
              </nav>
 
