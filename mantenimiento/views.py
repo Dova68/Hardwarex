@@ -9,5 +9,8 @@ def login(request):
 def historial(request):
     return render(request, "historial.html")
 
+def perfil(request):
+    return render(request, "perfil.html")
+
 def tecnico(request):
     return render(request, "tecnico.html")
