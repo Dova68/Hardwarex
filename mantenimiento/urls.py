@@ -20,4 +20,5 @@ urlpatterns = [
     path("equipos-admin/", views.equipos_admin, name="equipos_admin"),
     path("piezas/", views.piezas, name="piezas"),
     path("asignaciones/", views.asignaciones, name="asignaciones"),
+    path("logout/", views.logout, name="logout"),
 ]

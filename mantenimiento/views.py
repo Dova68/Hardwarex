@@ -179,3 +179,9 @@ def piezas(request):
 
 def asignaciones(request):
     return render(request, "asignaciones.html")
+
+def logout(request):
+
+    request.session.flush()
+
+    return redirect("login")
