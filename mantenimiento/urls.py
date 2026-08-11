@@ -12,4 +12,11 @@ urlpatterns = [
     path("mantenimientos/", views.mantenimientos, name="mantenimientos"),
     path("reportes/", views.reportes, name="reportes"),
     path("perfil-tecnico/", views.perfil_tecnico, name="perfil_tecnico"),
+    path("admin-home/", views.admin_home, name="admin_home"),
+    path("reportes-recientes/", views.reportes_recientes, name="reportes_recientes"),
+    path("tecnicos-admin/", views.tecnicos_admin, name="tecnicos_admin"),
+    path("historial-admin/", views.historial_admin, name="historial_admin"),
+    path("equipos-admin/", views.equipos_admin, name="equipos_admin"),
+    path("piezas/", views.piezas, name="piezas"),
+    path("asignaciones/", views.asignaciones, name="asignaciones"),
 ]
