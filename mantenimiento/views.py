@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Usuario
+from .models import Usuario, Rol
 
 
 def inicio(request):
@@ -25,7 +25,7 @@ def login(request):
                 request.session["nombres"] = usuario.nombres
                 request.session["apellidos"] = usuario.apellidos
                 request.session["email"] = usuario.email
-                request.session["id_rol_fk"] = usuario.id_rol_fk
+                request.session["id_rol_fk"] = usuario.id_rol_fk_id
 
                 # Redirigir al perfil
                 return redirect("perfil")
@@ -58,8 +58,8 @@ def register(request):
         fecha_nacimiento = request.POST.get("fecha_nacimiento")
         clave = request.POST.get("clave")
 
-        # Todos los usuarios registrados tendrán el rol 2
-        id_rol_fk = 2
+        # Buscar el rol 2 en la tabla rol
+        rol = Rol.objects.get(id_rol=2)
 
         # Comprobar nombre de usuario
         if Usuario.objects.filter(
@@ -94,7 +94,7 @@ def register(request):
             nombre_usuario=nombre_usuario,
             email=email,
             fecha_nacimiento=fecha_nacimiento,
-            id_rol_fk=id_rol_fk
+            id_rol_fk=rol
         )
 
         messages.success(
@@ -179,6 +179,7 @@ def piezas(request):
 
 def asignaciones(request):
     return render(request, "asignaciones.html")
+
 
 def logout(request):
 
