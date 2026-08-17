@@ -3,19 +3,15 @@ from django.db import models
 
 
 class Rol(models.Model):
-
     id_rol = models.AutoField(primary_key=True)
-
     nombre_rol = models.CharField(
         max_length=50,
         unique=True
     )
-
     descripcion_rol = models.TextField(
         null=True,
         blank=True
     )
-
     estado_rol = models.CharField(
         max_length=20
     )
@@ -29,42 +25,27 @@ class Rol(models.Model):
 
 
 class Usuario(models.Model):
-
     id_usuario = models.AutoField(primary_key=True)
-
-    clave = models.CharField(
-        max_length=255
-    )
-
-    nombres = models.CharField(
-        max_length=100
-    )
-
-    apellidos = models.CharField(
-        max_length=100
-    )
-
+    clave = models.CharField(max_length=255)
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
     numero_tel = models.CharField(
         max_length=20,
         null=True,
         blank=True
     )
-
     nombre_usuario = models.CharField(
         max_length=50,
         unique=True
     )
-
     email = models.CharField(
         max_length=100,
         unique=True
     )
-
     fecha_nacimiento = models.DateField(
         null=True,
         blank=True
     )
-
     id_rol_fk = models.ForeignKey(
         Rol,
         on_delete=models.DO_NOTHING,
@@ -83,11 +64,7 @@ class Usuario(models.Model):
 class TipoEquipo(models.Model):
 
     id_tipo_equipo = models.AutoField(primary_key=True)
-
-    nombre_tipo = models.CharField(
-        max_length=30,
-        unique=True
-    )
+    nombre_tipo = models.CharField(max_length=30, unique=True)
 
     class Meta:
         managed = False
@@ -100,27 +77,94 @@ class TipoEquipo(models.Model):
 class Ubicacion(models.Model):
 
     id_ubicacion = models.AutoField(primary_key=True)
-
-    sede = models.CharField(
-        max_length=100
-    )
-
-    salon = models.CharField(
-        max_length=20
-    )
+    sede = models.CharField(max_length=100)
+    salon = models.CharField(max_length=20)
 
     class Meta:
-        managed = False
+        unique_together = ('sede', 'salon')
         db_table = "ubicacion"
-        unique_together = ("sede", "salon")
 
     def __str__(self):
         return f"{self.sede} - {self.salon}"
 
 
 class Equipo(models.Model):
+    id_equipo = models.AutoField(primary_key=True)
+    codigo = models.CharField(max_length=100, unique=True)
+
+    id_tipo_equipo_fk = models.ForeignKey(
+        TipoEquipo,
+        on_delete=models.PROTECT,
+        db_column='id_tipo_equipo_fk'
+    )
+
+    fecha_compra = models.DateField(
+        null=True,
+        blank=True
+    )
+
+    id_ubicacion_fk = models.ForeignKey(
+        Ubicacion,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        db_column='id_ubicacion_fk'
+    )
+
+    estado_general = models.CharField(
+        max_length=20,
+        default='operativo'
+    )
+
+    class Meta:
+        db_table = 'equipo'
+
+    def __str__(self):
+        return self.codigo
 
     id_equipo = models.AutoField(primary_key=True)
+
+    codigo = models.CharField(
+        max_length=100,
+        unique=True
+    )
+
+    id_tipo_equipo_fk = models.ForeignKey(
+        TipoEquipo,
+        on_delete=models.DO_NOTHING,
+        db_column="id_tipo_equipo_fk"
+    )
+
+    fecha_compra = models.DateField(
+        null=True,
+        blank=True
+    )
+
+    id_ubicacion_fk = models.ForeignKey(
+        Ubicacion,
+        on_delete=models.DO_NOTHING,
+        db_column="id_ubicacion_fk",
+        null=True,
+        blank=True
+    )
+
+    estado_general = models.CharField(
+        max_length=20
+    )
+
+    class Meta:
+        managed = False
+        db_table = "equipo"
+
+    def __str__(self):
+        return self.codigo
+
+
+
+
+class TipoPieza(models.Model):
+
+    id_tipo_pieza = models.AutoField(primary_key=True)
 
     codigo = models.CharField(
         max_length=100,
