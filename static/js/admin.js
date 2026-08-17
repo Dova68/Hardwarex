@@ -89,11 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             });
 
-
-            // =================================================
             // SI ENCONTRAMOS EL EQUIPO
-            // =================================================
-
             if (equipo) {
 
                 console.log(
@@ -210,6 +206,110 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     formulario.reset();
 
+                }
+
+            }
+        );
+
+    }
+
+    // ELIMINAR EQUIPO
+
+    const selectorEliminar =
+        document.getElementById('equipo_eliminar');
+
+    const inputIdEliminar =
+        document.getElementById('eliminar_id_equipo');
+
+    const infoEliminar =
+        document.getElementById('info-equipo-eliminar');
+
+
+    if (selectorEliminar) {
+
+        selectorEliminar.addEventListener('change', function () {
+
+            const idSeleccionado = this.value;
+
+            console.log(
+                "Equipo seleccionado para eliminar:",
+                idSeleccionado
+            );
+
+
+            // Si no seleccionó nada
+
+            if (!idSeleccionado) {
+
+                inputIdEliminar.value = '';
+
+                if (infoEliminar) {
+                    infoEliminar.classList.add('d-none');
+                }
+
+                return;
+            }
+
+
+            // Guardamos el ID
+
+            inputIdEliminar.value = idSeleccionado;
+
+
+            // Mostrar advertencia
+
+            if (infoEliminar) {
+                infoEliminar.classList.remove('d-none');
+            }
+
+
+            // Buscar equipo
+
+            const equipo = equipos.find(function (equipo) {
+
+                return String(equipo.id) ===
+                    String(idSeleccionado);
+
+            });
+
+
+            if (equipo) {
+
+                console.log(
+                    "Equipo que se va a eliminar:",
+                    equipo
+                );
+
+            }
+
+        });
+
+    }
+
+
+    // LIMPIAR MODAL ELIMINAR
+
+
+    const modalEliminar =
+        document.getElementById('modalEliminarEquipo');
+
+
+    if (modalEliminar) {
+
+        modalEliminar.addEventListener(
+            'hidden.bs.modal',
+            function () {
+
+                if (selectorEliminar) {
+                    selectorEliminar.value = '';
+                }
+
+                if (inputIdEliminar) {
+                    inputIdEliminar.value = '';
+                }
+
+                if (infoEliminar) {
+                    infoEliminar.classList.add('d-none');
                 }
 
             }

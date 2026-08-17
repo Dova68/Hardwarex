@@ -500,7 +500,7 @@
                                     </label> 
                                     
                                     <select class="form-select" id="actualizar_estado" name="estado_general">
-                                        
+
                                         <option value="operativo">
                                             Operativo
                                         </option>
@@ -546,6 +546,138 @@
                     </div>
 
                 </div>
+                    </div>
+
+                    <button type="button" class="fab-action" data-bs-toggle="modal" data-bs-target="#modalEliminarEquipo"> Eliminar </button>
+
+                    <div class="modal fade" id="modalEliminarEquipo" tabindex="-1" aria-labelledby="modalEliminarEquipoLabel" aria-hidden="true">
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+
+                            <!-- HEADER -->
+
+                            <div class="modal-header">
+
+                                <h5 class="modal-title"
+                                    id="modalEliminarEquipoLabel">
+
+                                    Eliminar equipo
+
+                                </h5>
+
+                                <button type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Cerrar">
+                                </button>
+
+                            </div>
+
+
+                            <!-- FORMULARIO -->
+
+                            <form method="POST">
+
+                                {% csrf_token %}
+
+                                <!-- Acción -->
+
+                                <input type="hidden" name="accion" value="eliminar">
+
+
+                                <!-- ID del equipo -->
+
+                                <input type="hidden" name="id_equipo" id="eliminar_id_equipo">
+
+
+                                <div class="modal-body">
+
+                                    <p>
+                                        Selecciona el equipo que deseas eliminar.
+                                    </p>
+
+
+                                    <!-- SELECCIONAR EQUIPO -->
+
+                                    <div class="mb-3">
+
+                                        <label for="equipo_eliminar"
+                                            class="form-label">
+
+                                            Equipo
+
+                                        </label>
+
+
+                                        <select
+                                            class="form-select"
+                                            id="equipo_eliminar"
+                                            required>
+
+                                            <option value="">
+                                                Selecciona un equipo
+                                            </option>
+
+                                            {% for equipo in equipos %}
+
+                                                <option value="{{ equipo.id_equipo }}">
+
+                                                    {{ equipo.codigo }}
+
+                                                </option>
+
+                                            {% endfor %}
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <!-- INFORMACIÓN -->
+
+                                    <div id="info-equipo-eliminar"
+                                        class="alert alert-warning d-none">
+
+                                        <strong>Advertencia:</strong>
+
+                                        Este equipo será eliminado
+                                        permanentemente de la base de datos.
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- FOOTER -->
+
+                                <div class="modal-footer">
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            data-bs-dismiss="modal">
+
+                                        Cancelar
+
+                                    </button>
+
+
+                                    <button type="submit"
+                                            class="btn btn-danger">
+
+                                        Eliminar equipo
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
                 </div>
                     
 

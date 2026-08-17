@@ -43,7 +43,7 @@
                 <div class="user-card">
                     <div class="avatar">JD</div>
                     <div class="user-details">
-                        <span class="name">Juan Doe</span>
+                        <span class="name" id="header-name">{{ usuario.nombre_usuario }}</span>
                         <span class="role">Usuario</span>
                     </div>
                 </div>
@@ -79,33 +79,69 @@
                 </div>
                 <p class="wizard-help">El progreso se actualiza mientras completas los campos del paso actual.</p>
 
-                <form id="repair-form" novalidate>
+                <form id="repair-form" method="POST" novalidate>
+
+                    {% csrf_token %}
+
                     <div class="step-panel active" data-step="1">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="device-name">Marca / Modelo</label>
-                                <input type="text" id="device-name" placeholder="Ej: Laptop Dell XPS 15" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="device-location">Ubicación</label>
-                                <input type="text" id="device-location" placeholder="Ej: Oficina 203" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="serial-number">Número de serie</label>
-                                <input type="text" id="serial-number" placeholder="Opcional">
-                            </div>
-                            <div class="form-group">
-                                <label for="device-type">Tipo de equipo</label>
-                                <select id="device-type" required>
-                                    <option value="" disabled selected>Selecciona una opción...</option>
-                                    <option value="laptop">Laptop</option>
-                                    <option value="pc">PC de escritorio</option>
-                                    <option value="impresora">Impresora</option>
-                                    <option value="otro">Otro</option>
+                                <label for="id_equipo">Equipo</label>
+
+                                <select id="id_equipo" name="id_equipo" required>
+
+                                    <option value="" disabled selected>
+                                        Selecciona tu equipo...
+                                    </option>
+
+                                    {% for equipo in equipos %}
+
+                                        <option
+                                            value="{{ equipo.id_equipo }}"
+                                            data-tipo="{{ equipo.id_tipo_equipo_fk.nombre_tipo }}"
+                                            data-codigo="{{ equipo.codigo }}"
+                                            data-ubicacion="{% if equipo.id_ubicacion_fk %}{{ equipo.id_ubicacion_fk.sede }} - {{ equipo.id_ubicacion_fk.salon }}{% else %}Sin ubicación{% endif %}"
+                                        >
+                                            {{ equipo.codigo }} - {{ equipo.id_tipo_equipo_fk.nombre_tipo }}
+                                        </option>
+
+                                    {% endfor %}
+
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="device-location">Ubicación</label>
+
+                                <input
+                                    type="text"
+                                    id="device-location"
+                                    readonly
+                                    placeholder="Se mostrará automáticamente">
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="device-type">Tipo de equipo</label>
+                                <input
+                                    type="text"
+                                    id="device-type"
+                                    readonly
+                                    placeholder="Se mostrará automáticamente">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="device-code">Código del equipo</label>
+
+                                <input
+                                    type="text"
+                                    id="device-code"
+                                    readonly
+                                    placeholder="Se mostrará automáticamente">
+                            </div>
+
                         </div>
                     </div>
 
@@ -113,7 +149,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="issue-type">Tipo de daño</label>
-                                <select id="issue-type" required>
+                                <select id="issue-type" name="tipo_falla" required>
                                     <option value="" disabled selected>Selecciona una opción...</option>
                                     <option value="hardware">Falla de hardware</option>
                                     <option value="software">Falla de software</option>
@@ -123,7 +159,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="urgency">Urgencia</label>
-                                <select id="urgency" required>
+                                <select id="urgency" name="prioridad" required>
                                     <option value="" disabled selected>Selecciona la prioridad...</option>
                                     <option value="baja">Baja</option>
                                     <option value="media">Media</option>
@@ -133,8 +169,16 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="description">Descripción del daño</label>
-                            <textarea id="description" rows="5" placeholder="Describe qué está pasando con el equipo" required></textarea>
+
+                            <textarea
+                                id="description"
+                                name="descripcion"
+                                rows="5"
+                                placeholder="Describe qué está pasando con el equipo"
+                                required>
+                            </textarea>    
                         </div>
+
                         <label class="file-upload" for="upload-image">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <span>Haz clic para adjuntar una imagen (opcional)</span>
@@ -150,7 +194,12 @@
                             <div class="summary-item"><span>Tipo de daño:</span><span id="summary-issue"></span></div>
                             <div class="summary-item"><span>Urgencia:</span><span id="summary-urgency"></span></div>
                             <div class="summary-item"><span>Descripción:</span><span id="summary-description"></span></div>
-                            <div class="summary-item"><span>Serie:</span><span id="summary-serial"></span></div>
+
+                            <div class="summary-item">
+                                <span>Código:</span>
+                                <span id="summary-serial"></span>
+                            </div>
+                            
                         </div>
                     </div>
 

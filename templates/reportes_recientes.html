@@ -45,49 +45,129 @@
             </section>
 
             <section class="wizard-card">
+
                 <div class="report-grid">
-                    <article class="report-card">
-                        <div class="report-head">
-                            <span class="report-title">Reporte #00124</span>
-                            <span class="badge warning">Sin asignar</span>
-                        </div>
-                        <p class="report-text">Usuario: Juan Pérez</p>
-                        <p class="report-text">Equipo: Laptop Dell XPS</p>
-                        <p class="report-text">Daño: Falla de hardware</p>
-                        <div class="report-actions">
-                            <a href="#" class="btn primary">Asignar a técnico</a>
-                        </div>
-                        <!-- Conectar con BD: reportes recientes que no tienen técnico asignado -->
-                    </article>
 
-                    <article class="report-card">
-                        <div class="report-head">
-                            <span class="report-title">Reporte #00125</span>
-                            <span class="badge warning">Sin asignar</span>
-                        </div>
-                        <p class="report-text">Usuario: María Gómez</p>
-                        <p class="report-text">Equipo: PC Escritorio HP</p>
-                        <p class="report-text">Daño: Lentitud</p>
-                        <div class="report-actions">
-                            <a href="#" class="btn primary">Asignar a técnico</a>
-                        </div>
-                        <!-- Conectar con BD: reportes pendientes por técnico -->
-                    </article>
+                    {% for reporte in reportes %}
 
-                    <article class="report-card">
-                        <div class="report-head">
-                            <span class="report-title">Reporte #00126</span>
-                            <span class="badge warning">Sin asignar</span>
+                        <article class="report-card">
+
+                            <div class="report-head">
+
+                                <span class="report-title">
+                                    Solicitud #{{ reporte.id_solicitud }}
+                                </span>
+
+                                <span class="badge warning">
+                                    Sin asignar
+                                </span>
+
+                            </div>
+
+
+                            <p class="report-text">
+                                Usuario:
+                                {{ reporte.id_usuario_fk.nombres }}
+                                {{ reporte.id_usuario_fk.apellidos }}
+                            </p>
+
+
+                            <p class="report-text">
+                                Equipo:
+                                {{ reporte.id_equipo_fk.codigo }}
+                            </p>
+
+
+                            <p class="report-text">
+                                Tipo:
+                                {{ reporte.id_equipo_fk.id_tipo_equipo_fk.nombre_tipo }}
+                            </p>
+
+
+                            <p class="report-text">
+                                Prioridad:
+                                {{ reporte.prioridad_usuario }}
+                            </p>
+
+
+                            <p class="report-text">
+                                Descripción:
+                                {{ reporte.descripcion }}
+                            </p>
+
+
+                            <div class="report-actions">
+
+                                <form method="POST">
+
+                                    {% csrf_token %}
+
+                                    <input
+                                        type="hidden"
+                                        name="id_solicitud"
+                                        value="{{ reporte.id_solicitud }}"
+                                    >
+
+
+                                    <select
+                                        name="id_tecnico"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Seleccionar técnico...
+                                        </option>
+
+                                        {% for tecnico in tecnicos %}
+
+                                            <option value="{{ tecnico.id_usuario }}">
+
+                                                {{ tecnico.nombres }}
+                                                {{ tecnico.apellidos }}
+
+                                            </option>
+
+                                        {% endfor %}
+
+                                    </select>
+
+
+                                    <button
+                                        type="submit"
+                                        class="btn primary"
+                                    >
+                                        Asignar técnico
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </article>
+
+                    {% empty %}
+
+                        <div class="report-card">
+
+                            <div class="report-head">
+
+                                <span class="report-title">
+                                    No hay solicitudes pendientes
+                                </span>
+
+                            </div>
+
+                            <p class="report-text">
+                                Actualmente no existen reportes pendientes
+                                de asignación.
+                            </p>
+
                         </div>
-                        <p class="report-text">Usuario: Luis Ortega</p>
-                        <p class="report-text">Equipo: Pantalla Samsung</p>
-                        <p class="report-text">Daño: Pantalla dañada</p>
-                        <div class="report-actions">
-                            <a href="#" class="btn primary">Asignar a técnico</a>
-                        </div>
-                        <!-- Conectar con BD: reportes recientes recibidos -->
-                    </article>
+
+                    {% endfor %}
+
                 </div>
+
             </section>
         </main>
     </div>

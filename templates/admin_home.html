@@ -48,7 +48,7 @@
                 <div class="stats-grid">
                     <article class="stat-card">
                         <h3>Reportes recientes</h3>
-                        <p class="stat-value">6</p>
+                        <p class="stat-value">{{ total_reportes }}</p>
                         <p class="stat-copy">Solicitudes reportadas por usuarios y pendientes de asignación.</p>
                         <a class="btn secondary" href="{% url 'reportes_recientes' %}">Ver detalle</a>
                         <!-- Conectar con BD: total de reportes recientes -->
@@ -86,29 +86,65 @@
                     </div>
 
                     <div class="report-grid">
-                        <article class="report-card">
-                            <div class="report-head">
-                                <span class="report-title">Laptop Dell XPS</span>
-                                <span class="badge warning">Sin asignar</span>
-                            </div>
-                            <p class="report-text">Usuario: Juan Pérez</p>
-                            <p class="report-text">Daño: Falla de hardware</p>
-                            <div class="report-actions">
-                                <a href="#" class="btn primary">Asignar a técnico</a>
-                            </div>
-                        </article>
 
-                        <article class="report-card">
-                            <div class="report-head">
-                                <span class="report-title">PC Escritorio HP</span>
-                                <span class="badge warning">Sin asignar</span>
-                            </div>
-                            <p class="report-text">Usuario: María Gómez</p>
-                            <p class="report-text">Daño: Lentitud</p>
-                            <div class="report-actions">
-                                <a href="#" class="btn primary">Asignar a técnico</a>
-                            </div>
-                        </article>
+                        {% for solicitud in solicitudes %}
+
+                            <article class="report-card">
+
+                                <div class="report-head">
+
+                                    <span class="report-title">
+                                        {{ solicitud.id_equipo_fk.codigo }}
+                                    </span>
+
+                                    <span class="badge warning">
+                                        {{ solicitud.estado }}
+                                    </span>
+
+                                </div>
+
+                                <p class="report-text">
+                                    Usuario:
+                                    {{ solicitud.id_usuario_fk.nombres }}
+                                    {{ solicitud.id_usuario_fk.apellidos }}
+                                </p>
+
+                                <p class="report-text">
+                                    Equipo:
+                                    {{ solicitud.id_equipo_fk.id_tipo_equipo_fk.nombre_tipo }}
+                                </p>
+
+                                <p class="report-text">
+                                    Prioridad:
+                                    {{ solicitud.prioridad_usuario }}
+                                </p>
+
+                                <p class="report-text">
+                                    Daño:
+                                    {{ solicitud.descripcion }}
+                                </p>
+
+                                <p class="report-text">
+                                    Fecha:
+                                    {{ solicitud.fecha_solicitud|date:"d/m/Y H:i" }}
+                                </p>
+
+                                <div class="report-actions">
+
+                                    <a href="#" class="btn primary">
+                                        Asignar a técnico
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        {% empty %}
+
+                            <p>No hay solicitudes de reparación registradas.</p>
+
+                        {% endfor %}
+
                     </div>
                 </div>
             </section>

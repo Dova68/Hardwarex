@@ -1,10 +1,57 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Usuario, Equipo, TipoEquipo, Ubicacion
-import json
+from django.utils import timezone
+from .models import ( Usuario,Equipo,TipoEquipo,Ubicacion,SolicitudReparacion,Asignacion,Rol)
 
 def inicio(request):
-    return render(request, "index.html")
+
+    if "id_usuario" not in request.session:
+        return redirect("login")
+
+    usuario = Usuario.objects.get(
+        id_usuario=request.session["id_usuario"]
+    )
+    # REGISTRAR SOLICITUD
+    if request.method == "POST":
+
+        id_equipo = request.POST.get("id_equipo")
+        tipo_falla = request.POST.get("tipo_falla")
+        prioridad = request.POST.get("prioridad")
+        descripcion = request.POST.get("descripcion")
+
+        equipo = Equipo.objects.get(
+            id_equipo=id_equipo
+        )
+
+        SolicitudReparacion.objects.create(
+            id_usuario_fk=usuario,
+            id_equipo_fk=equipo,
+            descripcion=descripcion,
+            prioridad_usuario=prioridad,
+            fecha_solicitud=timezone.now(),
+            estado="en_proceso"
+        )
+
+        messages.success(
+            request,
+            "Solicitud enviada correctamente."
+        )
+
+        return redirect("inicio")
+    # MOSTRAR EQUIPOS
+    equipos = Equipo.objects.select_related(
+        "id_tipo_equipo_fk",
+        "id_ubicacion_fk"
+    ).all()
+
+    return render(
+        request,
+        "index.html",
+        {
+            "usuario": usuario,
+            "equipos": equipos
+        }
+    )
 
 
 def login(request):
@@ -179,11 +226,88 @@ def perfil_tecnico(request):
 
 
 def admin_home(request):
-    return render(request, "admin_home.html")
 
+    solicitudes = SolicitudReparacion.objects.select_related(
+        "id_usuario_fk",
+        "id_equipo_fk",
+        "id_equipo_fk__id_tipo_equipo_fk"
+    ).order_by("-fecha_solicitud")
+
+    total_reportes = solicitudes.count()
+
+    contexto = {
+        "solicitudes": solicitudes,
+        "total_reportes": total_reportes,
+    }
+
+    return render(
+        request,
+        "admin_home.html",
+        contexto
+    )
 
 def reportes_recientes(request):
-    return render(request, "reportes_recientes.html")
+
+    # ASIGNAR SOLICITUD A TÉCNICO
+    if request.method == "POST":
+
+        id_solicitud = request.POST.get("id_solicitud")
+        id_tecnico = request.POST.get("id_tecnico")
+
+        solicitud = SolicitudReparacion.objects.get(
+            id_solicitud=id_solicitud
+        )
+
+        tecnico = Usuario.objects.get(
+            id_usuario=id_tecnico
+        )
+
+        # Crear la asignación
+        Asignacion.objects.create(
+            id_solicitud_fk=solicitud,
+            id_tecnico_fk=tecnico,
+            prioridad_asignada=solicitud.prioridad_usuario,
+            fecha_asignacion=timezone.now(),
+            estado_asignacion="asignado"
+        )
+
+        # Cambiar estado de la solicitud
+        solicitud.estado = "en_proceso"
+        solicitud.save()
+
+        messages.success(
+            request,
+            "Solicitud asignada correctamente al técnico."
+        )
+
+        return redirect("reportes_recientes")
+
+
+    # MOSTRAR SOLICITUDES PENDIENTES
+    reportes = SolicitudReparacion.objects.select_related(
+        "id_usuario_fk",
+        "id_equipo_fk",
+        "id_equipo_fk__id_tipo_equipo_fk",
+        "id_equipo_fk__id_ubicacion_fk"
+    ).filter(
+        estado="pendiente"
+    ).order_by("-fecha_solicitud")
+
+
+    # TÉCNICOS
+    tecnicos = Usuario.objects.filter(
+        id_rol_fk_id=3
+    )
+
+
+    return render(
+        request,
+        "reportes_recientes.html",
+        {
+            "reportes": reportes,
+            "tecnicos": tecnicos
+        }
+    )
 
 
 def tecnicos_admin(request):
