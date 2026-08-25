@@ -200,7 +200,7 @@ button.ghost:hover i.register{
     opacity: 1;
 }
 
-button.ghost:hover i.lofin{
+button.ghost:hover i.login{
     left: 40px;
     opacity: 1;
 }
@@ -351,6 +351,9 @@ input{
         transform: translateX(-20%);
     }
     
+    .overlay .title{
+-webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);    }
     .containers.right-panel-active .overlay-left{
         transform: translateX(0);
     }
