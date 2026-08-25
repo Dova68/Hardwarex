@@ -680,46 +680,6 @@
 
                 </div>
                     
-
-                    <!-- <button class="fab-action" data-action="update">Actualizar</button>
-                    
-                    <button class="fab-action" data-action="delete">Eliminar</button>
-                </div>
-            </div>
-
-            Modal 
-            <div id="modal-overlay" class="modal-overlay hidden" aria-hidden="true">
-                <div class="modal">
-                    <header class="modal-header">
-                        <h2 id="modal-title">Acción</h2>
-                        <button id="modal-close" class="modal-close">&times;</button>
-                    </header>
-                    <div class="modal-body">
-                        <p id="modal-action-desc">¿Qué se va a hacer?</p>
-                        <form id="equipment-form">
-                            <input type="hidden" id="form-action" name="action" value="add">
-                            <div class="form-row">
-                                <label for="modelo">Modelo</label>
-                                <input id="modelo" name="modelo" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="salon">Salón / Ubicación</label>
-                                <input id="salon" name="salon" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="tipo">Tipo de daño</label>
-                                <input id="tipo" name="tipo">
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn primary" id="form-submit">Confirmar</button>
-                                <button type="button" class="btn secondary" id="form-cancel">Cancelar</button>
-                            </div>
-                            <p id="form-feedback" class="form-feedback"></p>
-                        </form>
-                    </div>
-                </div>
-            </div> -->
-    
     
     {{ equipos_json|json_script:"equipos-data" }}
     <script src="{% static 'js/admin.js' %}"></script>

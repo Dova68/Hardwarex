@@ -319,7 +319,7 @@ def historial_admin(request):
 
 
 def equipos_admin(request):
-    # POS
+    # POST
 
     if request.method == 'POST':
 
