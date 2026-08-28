@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardwarex - Equipos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tecnico.css' %}">
+</head>
+<body>
+    <div class="app-shell">
+        <main class="main-panel">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">Panel técnico</p>
+                    <h1>Equipos registrados</h1>
+                    <p>Lista general de los equipos activos en el sistema.</p>
+                </div>
+                <div class="user-card">
+                    <div class="avatar">TC</div>
+                    <div class="user-details">
+                        <span class="name">Técnico</span>
+                        <span class="role">Soporte</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="wizard-card">
+                <div class="wizard-header">
+                    <div class="wizard-step active">
+                        <div class="circle"><i class="fa-solid fa-desktop"></i></div>
+                        <div>
+                            <strong>Equipos</strong>
+                            <div style="font-size:.85rem; color:#64748b;">Inventario</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-intro">
+                    <p>Esta vista muestra los equipos registrados y su estado de seguimiento.</p>
+                </div>
+
+                <div class="list-card">
+                    <div class="list-row list-row-head">
+                        <span>Equipo</span>
+                        <span>Salón</span>
+                        <span>Número de serie</span>
+                        <span>Tipo</span>
+                    </div>
+
+                    <div class="list-row">
+                        <span>Dell Latitude 7420</span>
+                        <span>Salón 203</span>
+                        <span>DL-7420-001</span>
+                        <span>Laptop</span>
+                    </div>
+
+                    <div class="list-row">
+                        <span>HP EliteDesk 800</span>
+                        <span>Salón 104</span>
+                        <span>HP-ED-800</span>
+                        <span>PC de escritorio</span>
+                    </div>
+
+                    <div class="list-row">
+                        <span>Canon MF3010</span>
+                        <span>Recepción</span>
+                        <span>CN-MF3010</span>
+                        <span>Impresora</span>
+                    </div>
+
+                    <!-- Aquí se conectará la base de datos para listar los equipos registrados -->
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div>
+                <div class="logo-area">
+                    <img src="{% static 'img/Logo.png' %}" alt="Logo Hardwarex" class="logo-image">
+                    <span>Hardwarex</span>
+                </div>
+                <p style="color:#94a3b8; padding-right: 8px; line-height:1.6;">
+                    Gestión técnica y seguimiento de equipos.
+                </p>
+            </div>
+
+            <nav class="menu">
+                <a href="{% url 'tecnico' %}" class="menu-item"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="{% url 'equipos' %}" class="menu-item active"><i class="fa-solid fa-desktop"></i> Equipos</a>
+                <a href="{% url 'solicitudes' %}" class="menu-item"><i class="fa-solid fa-list-check"></i> Solicitudes</a>
+                <a href="{% url 'mantenimientos' %}" class="menu-item"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimientos</a>
+                <a href="{% url 'reportes' %}" class="menu-item"><i class="fa-solid fa-chart-column"></i> Reportes</a>
+                <a href="{% url 'perfil_tecnico' %}" class="menu-item"><i class="fa-solid fa-user"></i> Mi perfil</a>
+            </nav>
+
+            <div class="logout-area">
+                <a href="{% url 'login' %}" class="menu-item"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+            </div>
+        </aside>
+    </div>
+
+    <script src="{% static 'js/tecnico.js' %}"></script>
+</body>
+</html>

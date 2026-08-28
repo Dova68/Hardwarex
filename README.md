@@ -1,4 +1,7 @@
-# Hardwarex
+# HardwareX
+
+> **Para agentes de IA:** las reglas e instrucciones del proyecto se encuentran en `AGENT.md`.
+
 
 Este proyecto se basa en la creacion de una pagina para empresas que necesitan administrar los mantenimientos de sus equipos por medio de tickets para su arreglo.
 
